@@ -13,9 +13,13 @@
             <p>Heat: {{ $sauce->heat }}/10</p>
             @if(Auth::check())
                 <!-- Afficher boutons like et dislike -->
+                <div class="compteurs">
+                    <p>{{ $sauce->likes }} like(s)</p>
+                    <p>{{ $sauce->dislikes }} dislike(s)</p>
+                </div>
                 <div class="likeDislike">
-                    <a href="like/{{$sauce->id}}">👍 Like</a>
-                    <!-- <a href="dislike/{{$sauce->id}}">👎 Dislike</a> -->
+                    <a id="btnLike" href="{{route('likeSauce', ['id' => $sauce->id])}}">👍 Like</a>
+                    <a id="btnDislike" href="{{route('dislikeSauce', ['id' => $sauce->id])}}">👎 Dislike</a>
                 </div>
 
                 @if(Auth::user()->id == $sauce->userId)
@@ -31,7 +35,6 @@
                                 @method('delete')
                                 <button type="submit" id="accept" class="deleteBtn">❌ DELETE ❌</button>
                             </form>
-                            <!-- <a id="accept" class="deleteBtn" href="{{ route('addSauce') }}{{$sauce->id}}">❌ DELETE ❌</a> -->
                         </div>
                     </div>
                 </div>

@@ -23,8 +23,57 @@
     text-decoration: underline;
 }
 
+.compteurs {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+    margin-top: 35px;
+}
+
+.compteurs > p {
+    width: 50%;
+    text-align: center;
+}
+
+.likeDislike {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+}
+
+.likeDislike > a {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+}
+
+.likeDislike #btnLike {
+    background-color: #46af46;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.likeDislike #btnLike:hover {
+    background-color: #5cbf5c;
+}
+
+.likeDislike #btnDislike {
+    background-color: red;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.likeDislike #btnDislike:hover {
+    background-color: #ff3333;
+}
+
+
 #btnSuppr {
     margin-top: 35px;
+    align-self: center;
 }
 .deleteBtn {
     background-color: #ff0000;

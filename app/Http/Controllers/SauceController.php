@@ -50,4 +50,59 @@ class SauceController extends Controller
         $sauce->delete();
         return redirect()->route('allSauces')->with('success', 'Sauce bien supprimée');
     }
+
+    public function likeSauce($id){
+        //Vérification que l'utilisateur n'a pas déjà liké dans le json
+        $idUser = auth()->user()->id;
+        $sauce = Sauce::findOrfail($id);
+
+        $usersWhoLiked = json_decode($sauce->usersLiked);
+        if(in_array($idUser, $usersWhoLiked)){
+            return redirect()->back()->with('error', 'Vous avez déjà liké cette sauce');
+            
+        }
+        //On vérifie que l'utilisateur n'a pas déjà disliké
+        $usersWhoDisliked = json_decode($sauce->usersDisliked);
+        if(in_array($idUser, $usersWhoDisliked)){
+            //On supprime l'utilisateur du json
+            $usersWhoDisliked = array_diff($usersWhoDisliked, [$idUser]);
+            $sauce->usersDisliked = json_encode($usersWhoDisliked);
+            //On retire le dislike
+            $sauce->dislikes -= 1;
+        }
+        //Ajout du like
+        $sauce->likes += 1;
+        //On ajoute l'utilisateur dans le json
+        array_push($usersWhoLiked, $idUser);
+        $sauce->usersLiked = json_encode($usersWhoLiked);
+        $sauce->save();
+        return redirect()->back()->with('success', 'Vous avez liké cette sauce');
+    }
+
+    public function dislikeSauce($id){
+        //Vérification que l'utilisateur n'a pas déjà disliké dans le json
+        $idUser = auth()->user()->id;
+        $sauce = Sauce::findOrfail($id);
+
+        $usersWhoDisliked = json_decode($sauce->usersDisliked);
+        if(in_array($idUser, $usersWhoDisliked)){
+            return redirect()->back()->with('error', 'Vous avez déjà disliké cette sauce');
+        }
+        //On vérifie que l'utilisateur n'a pas déjà liké
+        $usersWhoLiked = json_decode($sauce->usersLiked);
+        if(in_array($idUser, $usersWhoLiked)){
+            //On supprime l'utilisateur du json
+            $usersWhoLiked = array_diff($usersWhoLiked, [$idUser]);
+            $sauce->usersLiked = json_encode($usersWhoLiked);
+            //On retire le like
+            $sauce->likes -= 1;
+        }
+        //Ajout du dislike
+        $sauce->dislikes += 1;
+        //On ajoute l'utilisateur dans le json
+        array_push($usersWhoDisliked, $idUser);
+        $sauce->usersDisliked = json_encode($usersWhoDisliked);
+        $sauce->save();
+        return redirect()->back()->with('success', 'Vous avez disliké cette sauce');
+    }
 }

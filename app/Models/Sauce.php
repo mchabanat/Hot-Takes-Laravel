@@ -23,7 +23,8 @@ class Sauce extends Model
     ];
 
     protected $attributes=[
-        'likes' => 0
+        'likes' => 0,
+        'dislikes' => 0
     ];
 
     public function Utilisateur()

@@ -22,8 +22,8 @@ return new class extends Migration
             $table->integer('heat');
             $table->integer('likes')->default(0);
             $table->integer('dislikes')->default(0);
-            $table->json('usersLiked')->nullable();
-            $table->json('usersDisliked')->nullable();
+            $table->json('usersLiked')->default(json_encode([]));
+            $table->json('usersDisliked')->default(json_encode([]));
             $table->timestamps();
         });
     }
