@@ -26,7 +26,12 @@
                     <p>Are you sure to delete : <strong>{{ $sauce->name }}</strong>?</p>
                         <div class="boutons-modal">
                             <a id="refuse">CANCEL</a>
-                            <a id="accept" class="deleteBtn" href="deleteSauce/{{$sauce->id}}">❌ DELETE ❌</a>
+                            <form action="/deleteSauce/{{ $sauce->id }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" id="accept" class="deleteBtn">❌ DELETE ❌</button>
+                            </form>
+                            <!-- <a id="accept" class="deleteBtn" href="{{ route('addSauce') }}{{$sauce->id}}">❌ DELETE ❌</a> -->
                         </div>
                     </div>
                 </div>

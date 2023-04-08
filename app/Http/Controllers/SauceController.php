@@ -48,6 +48,6 @@ class SauceController extends Controller
     public function destroy($id) {
         $sauce = Sauce::findOrFail($id);
         $sauce->delete();
-        return redirect()->route('allSauces');
+        return redirect()->route('allSauces')->with('success', 'Sauce bien supprimée');
     }
 }
