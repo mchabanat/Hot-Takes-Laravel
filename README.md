@@ -11,3 +11,5 @@ Le but de ce projet est de créer un site qui recense tout type de sauce piquant
 
 Le site permet également aux utilisateurs inscrits de pouvoir ajouter des nouvelles sauces, de supprimer les sauces qu'ils ont ajouté, mais aussi de liker/disliker les sauces.
 
+## Maquette
+<img src="Capture.PNG">
