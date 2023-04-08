@@ -42,4 +42,7 @@ Route::get('/addSauce', 'App\Http\Controllers\SauceController@create')
 Route::post('/storeSauce', 'App\Http\Controllers\SauceController@store')
     ->name('storeSauce');
 
+// Supprimer une sauce
+Route::get('deleteSauce/{id}', 'App\Http\Controllers\SauceController@destroy');
+
 // Gérer les likes

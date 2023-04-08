@@ -22,6 +22,10 @@ class Sauce extends Model
         'heat'
     ];
 
+    protected $attributes=[
+        'likes' => 0
+    ];
+
     public function Utilisateur()
     {
         return $this->belongsTo('App\Models\User');

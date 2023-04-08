@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin: 0 3%;
 }
 
 .uneSauce > img {
@@ -20,4 +21,80 @@
     font-weight: bold;
     padding-bottom: 15px;
     text-decoration: underline;
+}
+
+#btnSuppr {
+    margin-top: 35px;
+}
+.deleteBtn {
+    background-color: #ff0000;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 160px;
+    text-align: center;
+    font-size: 1.2rem;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.deleteBtn:hover {
+    background-color: #ff3333;
+}
+
+/* Fenetre modale */
+#modal {
+    display: none;
+}
+
+#modal.visible {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0,0,0,0.5);
+}
+
+#modalDesc {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 30px;
+    padding: 25px;
+    height: 200px;
+}
+
+.boutons-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.boutons-modal a {
+    width: 150px;
+    text-align: center;
+}
+
+.boutons-modal #refuse {
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: 0.2s;
+    cursor: pointer;
+    border: #000000 1px solid;
 }
